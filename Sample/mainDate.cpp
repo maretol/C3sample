@@ -9,7 +9,7 @@
 //このsampleを加工することによって、より簡単にゲームを作ることができることを目指して作られています
 //もちろん使わなくても構わないし、使っても構いません
 //製作者：maretol、染矢 元春(maretol@club.kyutech.ac.jp)
-//権利関係：基本的に条件はありません。ただし、加工・無加工にかかわらず二次配布はご相談ください
+//権利関係：基本的に条件はありません。ただし加工・無加工にかかわらず二次配布はご相談ください
 //備考：C++,C,OpenGL,OpenCVを用いて制作されています
 //OpenGL（GLUT）、OpenCVの導入はNuGetを前提としていますが、
 //パスを通しinclude文を整理してあげれば他の手段でも何ら問題はありません
@@ -121,7 +121,7 @@ void redisplay(int w, int h) {
 
 //ここから先テクスチャ関連
 //テクスチャ変数登録
-GLuint texture[1];
+GLuint texture[1]={1};
 
 bool loadGLTextures() {
 	IplImage *image1 = cvLoadImage("texture.jpg", CV_LOAD_IMAGE_ANYDEPTH|CV_LOAD_IMAGE_ANYCOLOR);
@@ -176,7 +176,7 @@ void display4() {
 	glDisable(GL_TEXTURE_2D);
 
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-	if(loadGLTextures()==false) {
+	if(!glIsTexture(texture[0])&&!loadGLTextures()) {
 		std::cerr<<"Can't Load Image\n";
 	}
 
@@ -223,7 +223,7 @@ void display5() {
 	glDisable(GL_TEXTURE_2D);
 
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-	if(loadGLTextures()==false) {
+	if(!glIsTexture(texture[0])&&!loadGLTextures()) {
 		std::cerr<<"Can't Load Image\n";
 	}
 
